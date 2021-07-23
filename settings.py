@@ -9,8 +9,8 @@ class Settings:
         self.base_card_color = 0, 0, 0
 
         # Board settings
-        self.cards_in_width = 6
-        self.cards_in_height = 6
+        self.cards_in_width = 8
+        self.cards_in_height = 8
 
         # Board indexes: defaults to the 4 corners
         self.TL = 0
@@ -25,7 +25,7 @@ class Settings:
         self.bg_color = (255, 255, 255)
 
         # Gradient settings
-        self.TL_color = [255,0,0]
+        self.TL_color = [0,0,0]
         self.TR_color = [255,255,200]
         self.BL_color = [0,0,255]
         self.BR_color = [40,200,200]

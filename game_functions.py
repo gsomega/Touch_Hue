@@ -3,7 +3,7 @@ import pygame
 from card import Card
 from settings import Settings
 from random import randint
-from typing import List
+from time import sleep
 
 
 def check_events(hue_settings, cards, sel_card_indexes):
@@ -77,3 +77,42 @@ def shuffle_board(cards, locked_card_indexes):
         index2 = randint(0,number_of_cards-1)
         if index1 != index2 and (index1 not in locked_card_indexes) and (index2 not in locked_card_indexes):
             card_swap(cards, [index1, index2])
+
+
+def start_animation(screen):
+    image = pygame.image.load('images/Title_Screen.bmp')
+    rect = image.get_rect()
+    screen_rect = screen.get_rect()
+    rect.centerx = screen_rect.centerx
+    rect.centery = screen_rect.centery
+    for i in range(256):
+        image.set_alpha(i)
+        screen.blit(image,rect)
+        pygame.display.flip()
+    sleep(2)
+
+def win_animation(screen):
+    image = pygame.image.load('images/great_job.bmp')
+    rect = image.get_rect()
+    screen_rect = screen.get_rect()
+    rect.centerx = screen_rect.centerx
+    rect.centery = screen_rect.centery
+    for i in range(256):
+        image.set_alpha(i)
+        screen.blit(image,rect)
+        pygame.display.flip()
+    sleep(2)
+
+
+def randomize_colors(hs: Settings):
+    hs.BR_color = randint(0, 100), randint(0, 100), randint(0, 255)
+    hs.TR_color = randint(0, 100), randint(0, 255), randint(0, 100)
+    hs.TL_color = randint(0, 255), randint(0, 100), randint(0, 100)
+    hs.BL_color = randint(200, 255), randint(200, 255), randint(200, 255)
+
+
+def restart_game(hue_settings, screen, cards):
+    cards.clear()
+    randomize_colors(hue_settings)
+    create_board(hue_settings, screen, cards)
+

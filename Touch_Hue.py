@@ -7,6 +7,7 @@ from time import sleep
 def run_game():
     pygame.init()
     hue_settings = Settings()
+    gf.randomize_colors(hue_settings)
     screen = pygame.display.set_mode((hue_settings.screen_width, hue_settings.screen_height))
     cards = []
     selected_cards = []
@@ -28,11 +29,17 @@ def run_game():
 
         if start:
             sleep(2)
+            gf.start_animation(screen)
             gf.shuffle_board(cards, hue_settings.locked_card_indexes)
             start = False
 
-        if cards == board_solution:
-            print("You win!!")
+        elif cards == board_solution:
+            gf.win_animation(screen)
+            sleep(2)
+            gf.restart_game(hue_settings, screen, cards)
+            board_solution = cards.copy()
+            start = True
+
 
 
 run_game()
