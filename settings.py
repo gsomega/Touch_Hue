@@ -9,8 +9,8 @@ class Settings:
         self.base_card_color = 0, 0, 0
 
         # Board settings
-        self.cards_in_width = 8
-        self.cards_in_height = 8
+        self.cards_in_width = 5
+        self.cards_in_height = 5
 
         # Board indexes: defaults to the 4 corners
         self.TL = 0
