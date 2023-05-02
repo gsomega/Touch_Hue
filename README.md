@@ -1,4 +1,4 @@
-"# Touch_Hue" 
+# Touch_Hue
 
 This is a python version of a popular phone game "I love Hue".
 
